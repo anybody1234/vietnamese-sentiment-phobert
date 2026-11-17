@@ -1,0 +1,738 @@
+{
+  "chosen_run": "len128_cwbalanced_s42",
+  "note": "Mọi số liệu ở đây tính lại từ results/errors_*.csv (câu sai) và nhãn test; confusion matrix dựng lại đã được kiểm tra khớp với bản lưu trong JSON của từng run. File này chỉ chứa số liệu; câu ví dụ của bộ dữ liệu: xem results/error_examples.json (không commit)",
+  "chosen_run_errors": {
+    "n_errors": 185,
+    "n_test": 3166,
+    "error_rate": 0.0584,
+    "confusion_matrix_rows_true_cols_pred": [
+      [
+        1367,
+        20,
+        22
+      ],
+      [
+        27,
+        85,
+        55
+      ],
+      [
+        45,
+        16,
+        1529
+      ]
+    ],
+    "confusion_pairs": [
+      {
+        "true": "neutral",
+        "pred": "positive",
+        "count": 55,
+        "pct_of_errors": 0.2973
+      },
+      {
+        "true": "positive",
+        "pred": "negative",
+        "count": 45,
+        "pct_of_errors": 0.2432
+      },
+      {
+        "true": "neutral",
+        "pred": "negative",
+        "count": 27,
+        "pct_of_errors": 0.1459
+      },
+      {
+        "true": "negative",
+        "pred": "positive",
+        "count": 22,
+        "pct_of_errors": 0.1189
+      },
+      {
+        "true": "negative",
+        "pred": "neutral",
+        "count": 20,
+        "pct_of_errors": 0.1081
+      },
+      {
+        "true": "positive",
+        "pred": "neutral",
+        "count": 16,
+        "pct_of_errors": 0.0865
+      }
+    ],
+    "neutral": {
+      "support": 167,
+      "predicted_as_neutral": 121,
+      "correct": 85,
+      "precision": 0.7025,
+      "recall": 0.509,
+      "f1": 0.5903
+    },
+    "errors_by_confidence": {
+      "<0.5": 5,
+      "0.5-0.7": 14,
+      "0.7-0.9": 19,
+      ">=0.9": 147
+    }
+  },
+  "baseline_vs_chosen": {
+    "both_correct": 2761,
+    "baseline_wrong_phobert_right": 220,
+    "phobert_wrong_baseline_right": 41,
+    "both_wrong": 144,
+    "both_wrong_same_prediction": 113,
+    "fixed_by_true_label": {
+      "negative": 67,
+      "neutral": 29,
+      "positive": 124
+    },
+    "broken_by_true_label": {
+      "negative": 17,
+      "neutral": 17,
+      "positive": 7
+    },
+    "negation_subset": {
+      "definition": "câu có ít nhất 1 từ trong ['chưa', 'chả', 'chẳng', 'không', 'đừng'], trừ 'không khí', 'không gian'",
+      "n": 642,
+      "baseline_errors": 85,
+      "phobert_errors": 34,
+      "fixed": 55,
+      "broken": 4,
+      "both_wrong": 30
+    },
+    "examples": "xem results/error_examples.json (không commit)"
+  },
+  "stability_across_seeds": {
+    "errors_per_run": {
+      "len128_cwbalanced_s42": 185,
+      "len128_cwbalanced_s43": 188,
+      "len128_cwbalanced_s44": 212,
+      "len128_cwnone_s42": 193,
+      "len128_cwnone_s43": 191,
+      "len128_cwnone_s44": 195
+    },
+    "balanced_3_runs": {
+      "distribution_n_runs_wrong": {
+        "0": 2925,
+        "1": 56,
+        "2": 26,
+        "3": 159
+      },
+      "wrong_in_any": 241,
+      "wrong_in_all_3_stable": 159,
+      "stable_with_same_wrong_label": 146,
+      "wrong_in_only_some": 82,
+      "pairwise_overlap": {
+        "len128_cwbalanced_s42&len128_cwbalanced_s43": 169,
+        "len128_cwbalanced_s42&len128_cwbalanced_s44": 167,
+        "len128_cwbalanced_s43&len128_cwbalanced_s44": 167
+      }
+    },
+    "all_6_runs": {
+      "distribution_n_runs_wrong": {
+        "0": 2903,
+        "1": 40,
+        "2": 29,
+        "3": 14,
+        "4": 20,
+        "5": 16,
+        "6": 144
+      },
+      "wrong_in_any": 263,
+      "wrong_in_all_6_stable": 144,
+      "wrong_in_only_some": 119
+    },
+    "wrong_in_all_6_runs_and_baseline": 118,
+    "chosen_run_errors": {
+      "n": 185,
+      "stable_across_balanced_seeds": 159,
+      "stable_across_all_6": 144
+    }
+  },
+  "error_rate_by_group": {
+    "overall": {
+      "phobert": {
+        "n": 3166,
+        "n_errors": 185,
+        "error_rate": 0.0584,
+        "ci95": [
+          0.0508,
+          0.0672
+        ],
+        "small_group": false
+      },
+      "baseline": {
+        "n": 3166,
+        "n_errors": 364,
+        "error_rate": 0.115,
+        "ci95": [
+          0.1043,
+          0.1266
+        ],
+        "small_group": false
+      }
+    },
+    "length_note": "độ dài = số phần tử tách theo dấu cách (gần bằng số âm tiết, dấu câu cũng tính 1), giống EDA",
+    "by_length": {
+      "1-3": {
+        "phobert": {
+          "n": 50,
+          "n_errors": 5,
+          "error_rate": 0.1,
+          "ci95": [
+            0.0435,
+            0.2136
+          ],
+          "small_group": false
+        },
+        "baseline": {
+          "n": 50,
+          "n_errors": 16,
+          "error_rate": 0.32,
+          "ci95": [
+            0.2076,
+            0.4581
+          ],
+          "small_group": false
+        }
+      },
+      "4-6": {
+        "phobert": {
+          "n": 472,
+          "n_errors": 35,
+          "error_rate": 0.0742,
+          "ci95": [
+            0.0538,
+            0.1014
+          ],
+          "small_group": false
+        },
+        "baseline": {
+          "n": 472,
+          "n_errors": 55,
+          "error_rate": 0.1165,
+          "ci95": [
+            0.0906,
+            0.1486
+          ],
+          "small_group": false
+        }
+      },
+      "7-10": {
+        "phobert": {
+          "n": 921,
+          "n_errors": 46,
+          "error_rate": 0.0499,
+          "ci95": [
+            0.0377,
+            0.066
+          ],
+          "small_group": false
+        },
+        "baseline": {
+          "n": 921,
+          "n_errors": 92,
+          "error_rate": 0.0999,
+          "ci95": [
+            0.0822,
+            0.121
+          ],
+          "small_group": false
+        }
+      },
+      "11-20": {
+        "phobert": {
+          "n": 1155,
+          "n_errors": 74,
+          "error_rate": 0.0641,
+          "ci95": [
+            0.0513,
+            0.0797
+          ],
+          "small_group": false
+        },
+        "baseline": {
+          "n": 1155,
+          "n_errors": 144,
+          "error_rate": 0.1247,
+          "ci95": [
+            0.1069,
+            0.145
+          ],
+          "small_group": false
+        }
+      },
+      "21-40": {
+        "phobert": {
+          "n": 477,
+          "n_errors": 21,
+          "error_rate": 0.044,
+          "ci95": [
+            0.029,
+            0.0664
+          ],
+          "small_group": false
+        },
+        "baseline": {
+          "n": 477,
+          "n_errors": 51,
+          "error_rate": 0.1069,
+          "ci95": [
+            0.0823,
+            0.1379
+          ],
+          "small_group": false
+        }
+      },
+      "41+": {
+        "phobert": {
+          "n": 91,
+          "n_errors": 4,
+          "error_rate": 0.044,
+          "ci95": [
+            0.0172,
+            0.1076
+          ],
+          "small_group": false
+        },
+        "baseline": {
+          "n": 91,
+          "n_errors": 6,
+          "error_rate": 0.0659,
+          "ci95": [
+            0.0306,
+            0.1365
+          ],
+          "small_group": false
+        }
+      }
+    },
+    "by_placeholder": {
+      "wzjwz<số>": {
+        "phobert": {
+          "n": 73,
+          "n_errors": 3,
+          "error_rate": 0.0411,
+          "ci95": [
+            0.0141,
+            0.114
+          ],
+          "small_group": false
+        },
+        "baseline": {
+          "n": 73,
+          "n_errors": 7,
+          "error_rate": 0.0959,
+          "ci95": [
+            0.0472,
+            0.185
+          ],
+          "small_group": false
+        }
+      },
+      "colon...": {
+        "phobert": {
+          "n": 31,
+          "n_errors": 3,
+          "error_rate": 0.0968,
+          "ci95": [
+            0.0335,
+            0.249
+          ],
+          "small_group": false
+        },
+        "baseline": {
+          "n": 31,
+          "n_errors": 4,
+          "error_rate": 0.129,
+          "ci95": [
+            0.0513,
+            0.2885
+          ],
+          "small_group": false
+        }
+      },
+      "doubledot": {
+        "phobert": {
+          "n": 27,
+          "n_errors": 2,
+          "error_rate": 0.0741,
+          "ci95": [
+            0.0206,
+            0.2337
+          ],
+          "small_group": true
+        },
+        "baseline": {
+          "n": 27,
+          "n_errors": 3,
+          "error_rate": 0.1111,
+          "ci95": [
+            0.0385,
+            0.2806
+          ],
+          "small_group": true
+        }
+      },
+      "dot": {
+        "phobert": {
+          "n": 9,
+          "n_errors": 3,
+          "error_rate": 0.3333,
+          "ci95": [
+            0.1206,
+            0.6458
+          ],
+          "small_group": true
+        },
+        "baseline": {
+          "n": 9,
+          "n_errors": 1,
+          "error_rate": 0.1111,
+          "ci95": [
+            0.0199,
+            0.435
+          ],
+          "small_group": true
+        }
+      },
+      "fraction": {
+        "phobert": {
+          "n": 10,
+          "n_errors": 0,
+          "error_rate": 0.0,
+          "ci95": [
+            0.0,
+            0.2775
+          ],
+          "small_group": true
+        },
+        "baseline": {
+          "n": 10,
+          "n_errors": 2,
+          "error_rate": 0.2,
+          "ci95": [
+            0.0567,
+            0.5098
+          ],
+          "small_group": true
+        }
+      },
+      "any_placeholder": {
+        "phobert": {
+          "n": 146,
+          "n_errors": 11,
+          "error_rate": 0.0753,
+          "ci95": [
+            0.0426,
+            0.1299
+          ],
+          "small_group": false
+        },
+        "baseline": {
+          "n": 146,
+          "n_errors": 17,
+          "error_rate": 0.1164,
+          "ci95": [
+            0.074,
+            0.1786
+          ],
+          "small_group": false
+        }
+      },
+      "no_placeholder": {
+        "phobert": {
+          "n": 3020,
+          "n_errors": 174,
+          "error_rate": 0.0576,
+          "ci95": [
+            0.0499,
+            0.0665
+          ],
+          "small_group": false
+        },
+        "baseline": {
+          "n": 3020,
+          "n_errors": 347,
+          "error_rate": 0.1149,
+          "ci95": [
+            0.104,
+            0.1268
+          ],
+          "small_group": false
+        }
+      }
+    },
+    "negation": {
+      "phobert": {
+        "n": 642,
+        "n_errors": 34,
+        "error_rate": 0.053,
+        "ci95": [
+          0.0381,
+          0.0731
+        ],
+        "small_group": false
+      },
+      "baseline": {
+        "n": 642,
+        "n_errors": 85,
+        "error_rate": 0.1324,
+        "ci95": [
+          0.1084,
+          0.1608
+        ],
+        "small_group": false
+      }
+    },
+    "no_vietnamese_diacritics": {
+      "note": "câu không có chữ cái nào mang dấu tiếng Việt, thường là tiếng Anh (heuristic, chưa đọc từng câu)",
+      "phobert": {
+        "n": 4,
+        "n_errors": 2,
+        "error_rate": 0.5,
+        "ci95": [
+          0.15,
+          0.85
+        ],
+        "small_group": true
+      },
+      "baseline": {
+        "n": 4,
+        "n_errors": 3,
+        "error_rate": 0.75,
+        "ci95": [
+          0.3006,
+          0.9544
+        ],
+        "small_group": true
+      }
+    },
+    "near_duplicate_of_train": {
+      "note": "câu test trùng 1 câu train sau khi chữ thường + bỏ dấu câu",
+      "same_label_as_train": {
+        "phobert": {
+          "n": 45,
+          "n_errors": 0,
+          "error_rate": 0.0,
+          "ci95": [
+            0.0,
+            0.0787
+          ],
+          "small_group": false
+        },
+        "baseline": {
+          "n": 45,
+          "n_errors": 1,
+          "error_rate": 0.0222,
+          "ci95": [
+            0.0039,
+            0.1157
+          ],
+          "small_group": false
+        }
+      },
+      "different_label_from_train": {
+        "phobert": {
+          "n": 1,
+          "n_errors": 1,
+          "error_rate": 1.0,
+          "ci95": [
+            0.2065,
+            1.0
+          ],
+          "small_group": true
+        },
+        "baseline": {
+          "n": 1,
+          "n_errors": 1,
+          "error_rate": 1.0,
+          "ci95": [
+            0.2065,
+            1.0
+          ],
+          "small_group": true
+        }
+      }
+    }
+  },
+  "label_conventions_in_train": {
+    "short_thanks_max8_tokens": {
+      "n": 30,
+      "neutral": 18,
+      "positive": 12
+    },
+    "starts_with_suggestion_word": {
+      "pattern": "^(?:(?:thầy|cô|giảng viên) )?(?:nên|cần|mong|hy vọng|hi vọng|thêm) ",
+      "n": 995,
+      "negative": 971,
+      "positive": 18,
+      "neutral": 6
+    }
+  },
+  "manual_categorization": {
+    "status": "1 người gán (có AI hỗ trợ), chưa được chủ dự án kiểm tra lại. Mỗi câu sai được gán đúng 1 nhóm chính theo cách đọc của người gán; nhóm 'nhãn có vẻ không nhất quán' chỉ là nghi vấn, không khẳng định nhãn gốc sai. Cần chủ dự án đọc lại một phần trước khi dùng các con số này.",
+    "file": "error_categories.csv",
+    "definitions": {
+      "Nhãn có vẻ không nhất quán": "câu có từ khen/chê rõ ràng trái với nhãn gốc, hoặc câu gần giống nhau mà nhãn khác nhau",
+      "Ranh giới trung tính (mô tả, khen/chê nhẹ, câu cụt)": "câu mô tả sự việc, khen/chê nhẹ ('ổn', 'đầy đủ') hoặc cụm từ thiếu ngữ cảnh",
+      "Góp ý, đề xuất, mong muốn": "câu dạng 'nên', 'cần', 'mong', 'hy vọng', 'thêm' hoặc góp ý ngầm không có các từ đó",
+      "Khen và chê trong cùng câu": "câu vừa khen vừa chê, thường nối bằng 'nhưng', 'tuy nhiên', 'mặc dù'",
+      "Phủ định, hàm ý, mỉa mai": "nghĩa của câu khác nghĩa bề mặt: phủ định kép, câu hỏi tu từ, chê ngầm, mỉa mai, từ tiêu cực nằm trong mệnh đề phụ",
+      "Ngoài lề (nói về bản thân, câu hỏi, lời chúc)": "câu không đánh giá giảng viên/môn học",
+      "Tiếng Anh, placeholder, lỗi gõ": "câu tiếng Anh, nhiều placeholder/tên riêng, hoặc lỗi chính tả làm đổi nghĩa",
+      "Câu rõ nghĩa, model vẫn sai": "câu rõ nghĩa, nhãn hợp lý, không thuộc các nhóm trên"
+    },
+    "n": 185,
+    "by_category": {
+      "Ranh giới trung tính (mô tả, khen/chê nhẹ, câu cụt)": {
+        "count": 58,
+        "pct": 0.3135,
+        "stable_across_balanced_seeds": 49
+      },
+      "Góp ý, đề xuất, mong muốn": {
+        "count": 37,
+        "pct": 0.2,
+        "stable_across_balanced_seeds": 30
+      },
+      "Nhãn có vẻ không nhất quán": {
+        "count": 28,
+        "pct": 0.1514,
+        "stable_across_balanced_seeds": 27
+      },
+      "Phủ định, hàm ý, mỉa mai": {
+        "count": 25,
+        "pct": 0.1351,
+        "stable_across_balanced_seeds": 21
+      },
+      "Khen và chê trong cùng câu": {
+        "count": 18,
+        "pct": 0.0973,
+        "stable_across_balanced_seeds": 15
+      },
+      "Ngoài lề (nói về bản thân, câu hỏi, lời chúc)": {
+        "count": 11,
+        "pct": 0.0595,
+        "stable_across_balanced_seeds": 10
+      },
+      "Tiếng Anh, placeholder, lỗi gõ": {
+        "count": 6,
+        "pct": 0.0324,
+        "stable_across_balanced_seeds": 5
+      },
+      "Câu rõ nghĩa, model vẫn sai": {
+        "count": 2,
+        "pct": 0.0108,
+        "stable_across_balanced_seeds": 2
+      }
+    },
+    "by_category_and_pair": {
+      "Ranh giới trung tính (mô tả, khen/chê nhẹ, câu cụt)": {
+        "negative→neutral": 3,
+        "negative→positive": 1,
+        "neutral→negative": 7,
+        "neutral→positive": 35,
+        "positive→negative": 2,
+        "positive→neutral": 10
+      },
+      "Góp ý, đề xuất, mong muốn": {
+        "negative→neutral": 4,
+        "negative→positive": 9,
+        "neutral→negative": 10,
+        "neutral→positive": 1,
+        "positive→negative": 13
+      },
+      "Nhãn có vẻ không nhất quán": {
+        "negative→positive": 4,
+        "neutral→negative": 1,
+        "neutral→positive": 6,
+        "positive→negative": 15,
+        "positive→neutral": 2
+      },
+      "Phủ định, hàm ý, mỉa mai": {
+        "negative→neutral": 8,
+        "negative→positive": 4,
+        "neutral→negative": 2,
+        "neutral→positive": 3,
+        "positive→negative": 6,
+        "positive→neutral": 2
+      },
+      "Khen và chê trong cùng câu": {
+        "negative→neutral": 1,
+        "negative→positive": 3,
+        "neutral→negative": 1,
+        "neutral→positive": 6,
+        "positive→negative": 6,
+        "positive→neutral": 1
+      },
+      "Ngoài lề (nói về bản thân, câu hỏi, lời chúc)": {
+        "negative→neutral": 2,
+        "neutral→negative": 6,
+        "neutral→positive": 3
+      },
+      "Tiếng Anh, placeholder, lỗi gõ": {
+        "negative→neutral": 1,
+        "negative→positive": 1,
+        "neutral→positive": 1,
+        "positive→negative": 2,
+        "positive→neutral": 1
+      },
+      "Câu rõ nghĩa, model vẫn sai": {
+        "negative→neutral": 1,
+        "positive→negative": 1
+      }
+    },
+    "by_pair_and_category": {
+      "neutral→positive": {
+        "Ranh giới trung tính (mô tả, khen/chê nhẹ, câu cụt)": 35,
+        "Khen và chê trong cùng câu": 6,
+        "Nhãn có vẻ không nhất quán": 6,
+        "Ngoài lề (nói về bản thân, câu hỏi, lời chúc)": 3,
+        "Phủ định, hàm ý, mỉa mai": 3,
+        "Góp ý, đề xuất, mong muốn": 1,
+        "Tiếng Anh, placeholder, lỗi gõ": 1
+      },
+      "positive→negative": {
+        "Nhãn có vẻ không nhất quán": 15,
+        "Góp ý, đề xuất, mong muốn": 13,
+        "Phủ định, hàm ý, mỉa mai": 6,
+        "Khen và chê trong cùng câu": 6,
+        "Ranh giới trung tính (mô tả, khen/chê nhẹ, câu cụt)": 2,
+        "Tiếng Anh, placeholder, lỗi gõ": 2,
+        "Câu rõ nghĩa, model vẫn sai": 1
+      },
+      "neutral→negative": {
+        "Góp ý, đề xuất, mong muốn": 10,
+        "Ranh giới trung tính (mô tả, khen/chê nhẹ, câu cụt)": 7,
+        "Ngoài lề (nói về bản thân, câu hỏi, lời chúc)": 6,
+        "Phủ định, hàm ý, mỉa mai": 2,
+        "Nhãn có vẻ không nhất quán": 1,
+        "Khen và chê trong cùng câu": 1
+      },
+      "negative→positive": {
+        "Góp ý, đề xuất, mong muốn": 9,
+        "Nhãn có vẻ không nhất quán": 4,
+        "Phủ định, hàm ý, mỉa mai": 4,
+        "Khen và chê trong cùng câu": 3,
+        "Ranh giới trung tính (mô tả, khen/chê nhẹ, câu cụt)": 1,
+        "Tiếng Anh, placeholder, lỗi gõ": 1
+      },
+      "negative→neutral": {
+        "Phủ định, hàm ý, mỉa mai": 8,
+        "Góp ý, đề xuất, mong muốn": 4,
+        "Ranh giới trung tính (mô tả, khen/chê nhẹ, câu cụt)": 3,
+        "Ngoài lề (nói về bản thân, câu hỏi, lời chúc)": 2,
+        "Khen và chê trong cùng câu": 1,
+        "Câu rõ nghĩa, model vẫn sai": 1,
+        "Tiếng Anh, placeholder, lỗi gõ": 1
+      },
+      "positive→neutral": {
+        "Ranh giới trung tính (mô tả, khen/chê nhẹ, câu cụt)": 10,
+        "Nhãn có vẻ không nhất quán": 2,
+        "Phủ định, hàm ý, mỉa mai": 2,
+        "Khen và chê trong cùng câu": 1,
+        "Tiếng Anh, placeholder, lỗi gõ": 1
+      }
+    }
+  }
+}

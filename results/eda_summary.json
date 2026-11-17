@@ -1,0 +1,440 @@
+{
+  "seed": 42,
+  "n_sentences": {
+    "train": 11426,
+    "validation": 1583,
+    "test": 3166
+  },
+  "label_distribution": {
+    "train": {
+      "negative": {
+        "count": 5325,
+        "pct": 46.6
+      },
+      "neutral": {
+        "count": 458,
+        "pct": 4.01
+      },
+      "positive": {
+        "count": 5643,
+        "pct": 49.39
+      }
+    },
+    "validation": {
+      "negative": {
+        "count": 705,
+        "pct": 44.54
+      },
+      "neutral": {
+        "count": 73,
+        "pct": 4.61
+      },
+      "positive": {
+        "count": 805,
+        "pct": 50.85
+      }
+    },
+    "test": {
+      "negative": {
+        "count": 1409,
+        "pct": 44.5
+      },
+      "neutral": {
+        "count": 167,
+        "pct": 5.27
+      },
+      "positive": {
+        "count": 1590,
+        "pct": 50.22
+      }
+    }
+  },
+  "train_imbalance_ratio_max_over_min": 12.32,
+  "length_syllables": {
+    "train": {
+      "p50": 11.0,
+      "p90": 26.0,
+      "p95": 33.0,
+      "p99": 52.0,
+      "max": 159
+    },
+    "validation": {
+      "p50": 11.0,
+      "p90": 25.0,
+      "p95": 31.0,
+      "p99": 46.0,
+      "max": 161
+    },
+    "test": {
+      "p50": 11.0,
+      "p90": 26.0,
+      "p95": 34.0,
+      "p99": 52.35,
+      "max": 98
+    }
+  },
+  "segmentation": {
+    "tool": "underthesea.word_tokenize(text, format='text')",
+    "underthesea_version": "9.5.0",
+    "train_seconds": 7.8
+  },
+  "length_words_train": {
+    "p50": 9.0,
+    "p90": 21.0,
+    "p95": 26.75,
+    "p99": 42.0,
+    "max": 122
+  },
+  "phobert_tokens_train": {
+    "tokenizer": "vinai/phobert-base",
+    "transformers_version": "5.23.0",
+    "input": "text đã tách từ bằng underthesea",
+    "includes_special_tokens": true,
+    "model_max_tokens": 256,
+    "tokenize_seconds": 0.99,
+    "unk_tokens": 32,
+    "total_tokens": 154907,
+    "p50": 11.0,
+    "p90": 24.0,
+    "p95": 30.0,
+    "p99": 46.0,
+    "max": 129
+  },
+  "truncation_train": [
+    {
+      "max_len": 64,
+      "số câu bị cắt": 27,
+      "% câu bị cắt": 0.236,
+      "token bị bỏ": 333
+    },
+    {
+      "max_len": 96,
+      "số câu bị cắt": 2,
+      "% câu bị cắt": 0.018,
+      "token bị bỏ": 50
+    },
+    {
+      "max_len": 128,
+      "số câu bị cắt": 1,
+      "% câu bị cắt": 0.009,
+      "token bị bỏ": 1
+    },
+    {
+      "max_len": 160,
+      "số câu bị cắt": 0,
+      "% câu bị cắt": 0.0,
+      "token bị bỏ": 0
+    },
+    {
+      "max_len": 256,
+      "số câu bị cắt": 0,
+      "% câu bị cắt": 0.0,
+      "token bị bỏ": 0
+    }
+  ],
+  "duplicates_within_train": [
+    {
+      "chuẩn hoá": "strip",
+      "số câu lặp lại (≥ 2 lần)": 1,
+      "số dòng thừa (bản sao)": 1,
+      "câu lặp có nhãn mâu thuẫn": 1
+    },
+    {
+      "chuẩn hoá": "strip + lower",
+      "số câu lặp lại (≥ 2 lần)": 1,
+      "số dòng thừa (bản sao)": 1,
+      "câu lặp có nhãn mâu thuẫn": 1
+    },
+    {
+      "chuẩn hoá": "lower + bỏ dấu câu",
+      "số câu lặp lại (≥ 2 lần)": 82,
+      "số dòng thừa (bản sao)": 85,
+      "câu lặp có nhãn mâu thuẫn": 2
+    }
+  ],
+  "overlap_with_train": [
+    {
+      "chuẩn hoá": "strip",
+      "tập": "validation",
+      "số dòng có trong train": 0,
+      "% của tập": 0.0,
+      "trong đó cùng nhãn với train": 0
+    },
+    {
+      "chuẩn hoá": "strip",
+      "tập": "test",
+      "số dòng có trong train": 0,
+      "% của tập": 0.0,
+      "trong đó cùng nhãn với train": 0
+    },
+    {
+      "chuẩn hoá": "strip + lower",
+      "tập": "validation",
+      "số dòng có trong train": 0,
+      "% của tập": 0.0,
+      "trong đó cùng nhãn với train": 0
+    },
+    {
+      "chuẩn hoá": "strip + lower",
+      "tập": "test",
+      "số dòng có trong train": 0,
+      "% của tập": 0.0,
+      "trong đó cùng nhãn với train": 0
+    },
+    {
+      "chuẩn hoá": "lower + bỏ dấu câu",
+      "tập": "validation",
+      "số dòng có trong train": 27,
+      "% của tập": 1.71,
+      "trong đó cùng nhãn với train": 26
+    },
+    {
+      "chuẩn hoá": "lower + bỏ dấu câu",
+      "tập": "test",
+      "số dòng có trong train": 46,
+      "% của tập": 1.45,
+      "trong đó cùng nhãn với train": 45
+    }
+  ],
+  "placeholder_families_train": [
+    {
+      "họ": "wzjwz<số>",
+      "ý nghĩa (suy đoán)": "tên người, thường đứng sau 'thầy'/'cô'",
+      "số lần xuất hiện": 238,
+      "số câu": 211,
+      "số dạng khác nhau": 233,
+      "bị underthesea ghép vào từ khác": 2
+    },
+    {
+      "họ": "colon...",
+      "ý nghĩa (suy đoán)": "biểu tượng cảm xúc (colonsmile, colonsad, ...)",
+      "số lần xuất hiện": 85,
+      "số câu": 85,
+      "số dạng khác nhau": 12,
+      "bị underthesea ghép vào từ khác": 9
+    },
+    {
+      "họ": "doubledot",
+      "ý nghĩa (suy đoán)": "dấu ':' (vd 11doubledot55 = 11:55)",
+      "số lần xuất hiện": 87,
+      "số câu": 85,
+      "số dạng khác nhau": 3,
+      "bị underthesea ghép vào từ khác": 9
+    },
+    {
+      "họ": "dot",
+      "ý nghĩa (suy đoán)": "dấu '.' (vd 1dot5 = 1.5, dotdotdot = ...)",
+      "số lần xuất hiện": 43,
+      "số câu": 41,
+      "số dạng khác nhau": 13,
+      "bị underthesea ghép vào từ khác": 3
+    },
+    {
+      "họ": "fraction",
+      "ý nghĩa (suy đoán)": "dấu '/' (vd 'thầy fraction cô' = thầy/cô)",
+      "số lần xuất hiện": 19,
+      "số câu": 18,
+      "số dạng khác nhau": 1,
+      "bị underthesea ghép vào từ khác": 2
+    }
+  ],
+  "top_placeholders_train": [
+    {
+      "token": "doubledot",
+      "họ": "doubledot",
+      "số lần": 85
+    },
+    {
+      "token": "colonsmile",
+      "họ": "colon...",
+      "số lần": 27
+    },
+    {
+      "token": "fraction",
+      "họ": "fraction",
+      "số lần": 19
+    },
+    {
+      "token": "dot",
+      "họ": "dot",
+      "số lần": 18
+    },
+    {
+      "token": "colonsmilesmile",
+      "họ": "colon...",
+      "số lần": 12
+    },
+    {
+      "token": "colonsad",
+      "họ": "colon...",
+      "số lần": 11
+    },
+    {
+      "token": "coloncontemn",
+      "họ": "colon...",
+      "số lần": 9
+    },
+    {
+      "token": "vdotv",
+      "họ": "dot",
+      "số lần": 8
+    },
+    {
+      "token": "colonlove",
+      "họ": "colon...",
+      "số lần": 7
+    },
+    {
+      "token": "colonbigsmile",
+      "họ": "colon...",
+      "số lần": 5
+    },
+    {
+      "token": "dotdotdot",
+      "họ": "dot",
+      "số lần": 5
+    },
+    {
+      "token": "colonsmallsmile",
+      "họ": "colon...",
+      "số lần": 4
+    },
+    {
+      "token": "colondoublesurprise",
+      "họ": "colon...",
+      "số lần": 3
+    },
+    {
+      "token": "colonhihi",
+      "họ": "colon...",
+      "số lần": 3
+    },
+    {
+      "token": "wzjwz83",
+      "họ": "wzjwz<số>",
+      "số lần": 2
+    }
+  ],
+  "top30_tokens_train": [
+    {
+      "token": ".",
+      "số lần": 11009
+    },
+    {
+      "token": ",",
+      "số lần": 6827
+    },
+    {
+      "token": "viên",
+      "số lần": 4803
+    },
+    {
+      "token": "giảng",
+      "số lần": 3711
+    },
+    {
+      "token": "dạy",
+      "số lần": 3156
+    },
+    {
+      "token": "thầy",
+      "số lần": 3095
+    },
+    {
+      "token": "sinh",
+      "số lần": 3082
+    },
+    {
+      "token": "học",
+      "số lần": 2940
+    },
+    {
+      "token": "bài",
+      "số lần": 2336
+    },
+    {
+      "token": "tình",
+      "số lần": 2266
+    },
+    {
+      "token": "không",
+      "số lần": 2177
+    },
+    {
+      "token": "và",
+      "số lần": 2068
+    },
+    {
+      "token": "có",
+      "số lần": 2031
+    },
+    {
+      "token": "rất",
+      "số lần": 1961
+    },
+    {
+      "token": "nhiệt",
+      "số lần": 1931
+    },
+    {
+      "token": "cho",
+      "số lần": 1735
+    },
+    {
+      "token": "hiểu",
+      "số lần": 1730
+    },
+    {
+      "token": "nhiều",
+      "số lần": 1622
+    },
+    {
+      "token": "tập",
+      "số lần": 1454
+    },
+    {
+      "token": "dễ",
+      "số lần": 1438
+    },
+    {
+      "token": "thực",
+      "số lần": 1431
+    },
+    {
+      "token": "cô",
+      "số lần": 1202
+    },
+    {
+      "token": "môn",
+      "số lần": 1120
+    },
+    {
+      "token": "nên",
+      "số lần": 1088
+    },
+    {
+      "token": "tâm",
+      "số lần": 1080
+    },
+    {
+      "token": "với",
+      "số lần": 1052
+    },
+    {
+      "token": "thức",
+      "số lần": 1048
+    },
+    {
+      "token": "được",
+      "số lần": 1026
+    },
+    {
+      "token": "kiến",
+      "số lần": 1022
+    },
+    {
+      "token": "hơn",
+      "số lần": 1014
+    }
+  ]
+}

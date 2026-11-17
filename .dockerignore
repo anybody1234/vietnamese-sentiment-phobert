@@ -1,0 +1,16 @@
+# Không gửi vào build context: nặng (model, venv, dữ liệu) hoặc không cần để chạy API
+.venv
+data
+models
+results
+notebooks
+kaggle
+tests
+LEARNING.md
+CLAUDE.md
+.git
+.env
+.pytest_cache
+.ipynb_checkpoints
+**/__pycache__
+**/*.pyc

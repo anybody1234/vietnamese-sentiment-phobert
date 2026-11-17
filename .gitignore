@@ -1,0 +1,32 @@
+# Môi trường Python
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.pytest_cache/
+
+# Dữ liệu: giấy phép không cho đăng lại, code tự tải về
+data/
+
+# Model: file lớn (khoảng 500 MB), git không dành cho file lớn
+models/
+*.pt
+*.bin
+*.safetensors
+
+# Bí mật
+.env
+
+# Danh sách câu đoán sai chứa nguyên văn câu của UIT-VSFC (giấy phép chưa rõ, chỉ cho nghiên cứu).
+# Không đăng lại; chạy lại code sẽ tự sinh. README chỉ trích vài câu làm ví dụ.
+results/errors_*.csv
+results/error_categories.csv
+results/error_examples.json
+
+# Kaggle: script sinh tự động và output tải về (kết quả cần giữ được chép sang results/)
+kaggle/build/
+kaggle/output/
+
+# Ghi chép cá nhân và hướng dẫn làm việc: repo công khai chỉ chứa nội dung dự án
+LEARNING.md
+CLAUDE.md

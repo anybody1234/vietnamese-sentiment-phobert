@@ -1,0 +1,14 @@
+# Chỉ những gì API cần lúc chạy (dùng trong Docker). Không có jupyter, matplotlib, scikit-learn, pandas.
+# torch cài riêng trước, từ index CPU của PyTorch (bản Linux trên PyPI kèm thư viện CUDA nặng vài GB, vô ích trên CPU):
+#   pip install torch==2.15.0 --index-url https://download.pytorch.org/whl/cpu
+# Phiên bản ghim giống .venv đã dùng để train, đánh giá và đo latency.
+fastapi==0.163.1
+uvicorn==0.54.0
+pydantic==2.14.3
+transformers==5.23.0
+tokenizers==0.23.3
+safetensors==0.8.0
+huggingface_hub==2.4.0
+numpy==2.4.6
+underthesea==9.5.0
+underthesea_core==3.3.2

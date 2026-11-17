@@ -1,0 +1,155 @@
+{
+  "selection_rule": "cấu hình: trung bình val macro-F1 cao hơn trên 3 seed (hoà thì chọn none); checkpoint: run có val macro-F1 cao nhất trong cấu hình đã chọn. Không dùng test để chọn.",
+  "runs": [
+    {
+      "run_name": "len128_cwbalanced_s42",
+      "class_weights": "balanced",
+      "seed": 42,
+      "best_epoch": 5,
+      "val_macro_f1": 0.8812,
+      "val_loss_min_epoch": 1,
+      "test_macro_f1": 0.8357,
+      "test_accuracy": 0.9416,
+      "test_neutral_f1": 0.5903,
+      "train_minutes": 3.5,
+      "peak_vram_mb": 3377,
+      "first_step_loss": 1.1241
+    },
+    {
+      "run_name": "len128_cwbalanced_s43",
+      "class_weights": "balanced",
+      "seed": 43,
+      "best_epoch": 5,
+      "val_macro_f1": 0.8674,
+      "val_loss_min_epoch": 3,
+      "test_macro_f1": 0.8359,
+      "test_accuracy": 0.9406,
+      "test_neutral_f1": 0.5931,
+      "train_minutes": 3.5,
+      "peak_vram_mb": 3380,
+      "first_step_loss": 1.1048
+    },
+    {
+      "run_name": "len128_cwbalanced_s44",
+      "class_weights": "balanced",
+      "seed": 44,
+      "best_epoch": 3,
+      "val_macro_f1": 0.8784,
+      "val_loss_min_epoch": 1,
+      "test_macro_f1": 0.8311,
+      "test_accuracy": 0.933,
+      "test_neutral_f1": 0.5897,
+      "train_minutes": 3.5,
+      "peak_vram_mb": 3367,
+      "first_step_loss": 1.0956
+    },
+    {
+      "run_name": "len128_cwnone_s42",
+      "class_weights": "none",
+      "seed": 42,
+      "best_epoch": 5,
+      "val_macro_f1": 0.8531,
+      "val_loss_min_epoch": 2,
+      "test_macro_f1": 0.8286,
+      "test_accuracy": 0.939,
+      "test_neutral_f1": 0.5745,
+      "train_minutes": 3.6,
+      "peak_vram_mb": 3377,
+      "first_step_loss": 1.1425
+    },
+    {
+      "run_name": "len128_cwnone_s43",
+      "class_weights": "none",
+      "seed": 43,
+      "best_epoch": 4,
+      "val_macro_f1": 0.8522,
+      "val_loss_min_epoch": 2,
+      "test_macro_f1": 0.8255,
+      "test_accuracy": 0.9397,
+      "test_neutral_f1": 0.5614,
+      "train_minutes": 3.5,
+      "peak_vram_mb": 3380,
+      "first_step_loss": 1.1063
+    },
+    {
+      "run_name": "len128_cwnone_s44",
+      "class_weights": "none",
+      "seed": 44,
+      "best_epoch": 3,
+      "val_macro_f1": 0.8619,
+      "val_loss_min_epoch": 3,
+      "test_macro_f1": 0.8388,
+      "test_accuracy": 0.9384,
+      "test_neutral_f1": 0.6059,
+      "train_minutes": 3.5,
+      "peak_vram_mb": 3367,
+      "first_step_loss": 1.096
+    }
+  ],
+  "per_config_mean_std": {
+    "none": {
+      "val_macro_f1": {
+        "mean": 0.8557,
+        "std": 0.0054,
+        "n": 3
+      },
+      "test_macro_f1": {
+        "mean": 0.831,
+        "std": 0.007,
+        "n": 3
+      },
+      "test_accuracy": {
+        "mean": 0.939,
+        "std": 0.0007,
+        "n": 3
+      },
+      "test_neutral_f1": {
+        "mean": 0.5806,
+        "std": 0.0229,
+        "n": 3
+      }
+    },
+    "balanced": {
+      "val_macro_f1": {
+        "mean": 0.8757,
+        "std": 0.0073,
+        "n": 3
+      },
+      "test_macro_f1": {
+        "mean": 0.8342,
+        "std": 0.0027,
+        "n": 3
+      },
+      "test_accuracy": {
+        "mean": 0.9384,
+        "std": 0.0047,
+        "n": 3
+      },
+      "test_neutral_f1": {
+        "mean": 0.591,
+        "std": 0.0018,
+        "n": 3
+      }
+    }
+  },
+  "chosen_class_weights": "balanced",
+  "chosen_run": "len128_cwbalanced_s42",
+  "chosen_run_metrics": {
+    "run_name": "len128_cwbalanced_s42",
+    "class_weights": "balanced",
+    "seed": 42,
+    "best_epoch": 5,
+    "val_macro_f1": 0.8812,
+    "val_loss_min_epoch": 1,
+    "test_macro_f1": 0.8357,
+    "test_accuracy": 0.9416,
+    "test_neutral_f1": 0.5903,
+    "train_minutes": 3.5,
+    "peak_vram_mb": 3377,
+    "first_step_loss": 1.1241
+  },
+  "baseline_test": {
+    "macro_f1": 0.7493,
+    "accuracy": 0.885
+  }
+}

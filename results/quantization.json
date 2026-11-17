@@ -1,0 +1,248 @@
+{
+  "model_dir": "phobert_len128_cwbalanced_s42",
+  "method": "torch.ao.quantization.quantize_dynamic({nn.Linear}, qint8)",
+  "measured_at": "2026-11-17T13:24:54",
+  "on_ac_power": true,
+  "environment": {
+    "cpu": "AMD Ryzen 7 6800H with Radeon Graphics",
+    "logical_cpus": 16,
+    "os": "Windows-10-10.0.26200-SP0",
+    "power_plan": "Silent",
+    "torch_threads": 8,
+    "quantized_engine": "onednn",
+    "versions": {
+      "python": "3.11.7",
+      "torch": "2.15.0+cpu",
+      "transformers": "5.23.0",
+      "tokenizers": "0.23.3",
+      "underthesea": "9.5.0",
+      "fastapi": "0.163.1",
+      "uvicorn": "0.54.0",
+      "pydantic": "2.14.3"
+    }
+  },
+  "size_mb": {
+    "fp32": 515.1,
+    "int8": 270.4,
+    "fp32_checkpoint_safetensors": 515.0
+  },
+  "validation": {
+    "n_sentences": 1583,
+    "fp32": {
+      "macro_f1": 0.8812,
+      "accuracy": 0.9551,
+      "f1_per_class": {
+        "negative": 0.9648,
+        "neutral": 0.7121,
+        "positive": 0.9665
+      },
+      "confusion_matrix": [
+        [
+          686,
+          5,
+          14
+        ],
+        [
+          12,
+          47,
+          14
+        ],
+        [
+          19,
+          7,
+          779
+        ]
+      ]
+    },
+    "int8": {
+      "macro_f1": 0.8259,
+      "accuracy": 0.9413,
+      "f1_per_class": {
+        "negative": 0.9526,
+        "neutral": 0.5688,
+        "positive": 0.9562
+      },
+      "confusion_matrix": [
+        [
+          684,
+          2,
+          19
+        ],
+        [
+          20,
+          31,
+          22
+        ],
+        [
+          27,
+          3,
+          775
+        ]
+      ]
+    },
+    "changed_predictions": {
+      "count": 41,
+      "fraction": 0.0259,
+      "fp32_to_int8": {
+        "negative -> positive": 9,
+        "neutral -> positive": 9,
+        "positive -> negative": 9,
+        "neutral -> negative": 14
+      }
+    },
+    "max_abs_prob_diff": 0.892,
+    "fp32_macro_f1_reported_in_training": 0.8812
+  },
+  "latency_inprocess": {
+    "fp32": {
+      "batch_1": {
+        "n_requests": 300,
+        "batch_size": 1,
+        "per_request_ms": {
+          "p50": 44.01,
+          "p95": 64.86,
+          "mean": 46.77
+        },
+        "per_sentence_ms": {
+          "p50": 44.01,
+          "p95": 64.86,
+          "mean": 46.77
+        },
+        "model_only_ms": {
+          "p50": 42.76,
+          "p95": 63.12,
+          "mean": 45.38
+        }
+      },
+      "batch_16": {
+        "n_requests": 80,
+        "batch_size": 16,
+        "per_request_ms": {
+          "p50": 302.08,
+          "p95": 615.03,
+          "mean": 348.87
+        },
+        "per_sentence_ms": {
+          "p50": 18.88,
+          "p95": 38.44,
+          "mean": 21.8
+        },
+        "model_only_ms": {
+          "p50": 289.48,
+          "p95": 597.37,
+          "mean": 333.97
+        }
+      }
+    },
+    "int8": {
+      "batch_1": {
+        "n_requests": 300,
+        "batch_size": 1,
+        "per_request_ms": {
+          "p50": 60.77,
+          "p95": 98.3,
+          "mean": 64.56
+        },
+        "per_sentence_ms": {
+          "p50": 60.77,
+          "p95": 98.3,
+          "mean": 64.56
+        },
+        "model_only_ms": {
+          "p50": 59.65,
+          "p95": 95.46,
+          "mean": 63.16
+        }
+      },
+      "batch_16": {
+        "n_requests": 80,
+        "batch_size": 16,
+        "per_request_ms": {
+          "p50": 196.54,
+          "p95": 395.56,
+          "mean": 223.48
+        },
+        "per_sentence_ms": {
+          "p50": 12.28,
+          "p95": 24.72,
+          "mean": 13.97
+        },
+        "model_only_ms": {
+          "p50": 181.98,
+          "p95": 377.13,
+          "mean": 208.64
+        }
+      }
+    }
+  },
+  "test": {
+    "evaluated_at": "2026-11-17T13:21:23",
+    "n_sentences": 3166,
+    "int8": {
+      "macro_f1": 0.7852,
+      "accuracy": 0.9305,
+      "f1_per_class": {
+        "negative": 0.9476,
+        "neutral": 0.4589,
+        "positive": 0.9491
+      },
+      "confusion_matrix": [
+        [
+          1373,
+          3,
+          33
+        ],
+        [
+          54,
+          53,
+          60
+        ],
+        [
+          62,
+          8,
+          1520
+        ]
+      ]
+    },
+    "fp32_reference": {
+      "macro_f1": 0.8357,
+      "accuracy": 0.9416,
+      "f1_per_class": {
+        "negative": 0.96,
+        "neutral": 0.5903,
+        "positive": 0.9568
+      },
+      "confusion_matrix": [
+        [
+          1367,
+          20,
+          22
+        ],
+        [
+          27,
+          85,
+          55
+        ],
+        [
+          45,
+          16,
+          1529
+        ]
+      ],
+      "source": "phobert_len128_cwbalanced_s42.json (Kaggle T4, fp16, không chấm lại)"
+    },
+    "seconds": 57.0
+  },
+  "batch_dependence": {
+    "fp32": {
+      "label_changes": 0,
+      "max_abs_prob_diff": 5.513429641723633e-06,
+      "compared": "batch 1 vs batch 64, toàn bộ validation"
+    },
+    "int8": {
+      "label_changes": 21,
+      "max_abs_prob_diff": 0.6392000913619995,
+      "compared": "batch 1 vs batch 64, toàn bộ validation"
+    }
+  }
+}
