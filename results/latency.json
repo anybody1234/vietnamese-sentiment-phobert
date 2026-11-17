@@ -107,6 +107,47 @@
             "mean": 21.47
           }
         }
+      },
+      "docker": {
+        "measured_at": "2026-11-17T17:49:01",
+        "on_ac_power": true,
+        "image": "phobert-sentiment-api:1.0",
+        "image_size_mb": 1749,
+        "container": {
+          "logical_cpus": 16,
+          "torch_threads": 8,
+          "quantized_engine": "x86"
+        },
+        "cold_start_seconds": 8.78,
+        "model_load_seconds": 3.86,
+        "batch_1": {
+          "n_requests": 300,
+          "batch_size": 1,
+          "per_request_ms": {
+            "p50": 43.39,
+            "p95": 71.39,
+            "mean": 47.47
+          },
+          "per_sentence_ms": {
+            "p50": 43.39,
+            "p95": 71.39,
+            "mean": 47.47
+          }
+        },
+        "batch_16": {
+          "n_requests": 80,
+          "batch_size": 16,
+          "per_request_ms": {
+            "p50": 328.63,
+            "p95": 630.41,
+            "mean": 361.28
+          },
+          "per_sentence_ms": {
+            "p50": 20.54,
+            "p95": 39.4,
+            "mean": 22.58
+          }
+        }
       }
     },
     "int8": {

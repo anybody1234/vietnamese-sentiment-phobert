@@ -181,7 +181,17 @@ docker run --rm -p 8000:8000 -v "${PWD}/models:/models:ro" phobert-sentiment-api
 
 On macOS/Linux use `-v "$(pwd)/models:/models:ro"`. Design choices in the [`Dockerfile`](Dockerfile): `python:3.11-slim`; the CPU-only PyTorch wheel from the PyTorch index (the default Linux wheel ships CUDA libraries that are useless on CPU), installed first so that code changes reuse the cached layer; only `requirements-api.txt` (no Jupyter, pandas or scikit-learn); only `app/` and `src/dataset.py` are copied; **the model is not baked into the image** but mounted read-only, so changing the checkpoint does not require a rebuild; `HF_HUB_OFFLINE=1`; a non-root user; a `HEALTHCHECK` on `/health` written in Python (the slim image has no curl); one uvicorn worker, since each worker would hold its own copy of the model.
 
-> **TODO: Docker measurements pending.** Image size, container cold start and latency through Docker have not been measured yet. They will be filled in from `results/latency.json` (`runs.fp32.docker`) after running `python -X utf8 -m src.bench_latency --targets docker`.
+Measured with `python -X utf8 -m src.bench_latency --targets docker` (`results/latency.json`, `runs.fp32.docker`) on the same laptop, Docker Desktop 4.94 on WSL 2. The script starts the container with the read-only model mount, waits for `/health`, sends the same requests as above, then stops the container. Inside the container PyTorch also uses 8 threads.
+
+- **Image size:** 1.83 GB unpacked (`docker image inspect`), 394 MB compressed content. The model (515 MB) is not included.
+- **Cold start:** 8.8 s from `docker run` until `/health` returns 200, of which 3.9 s is loading the model plus the warm-up call. The first start after Docker Desktop had restarted took about 40 s (31 s to load the model): on Windows the mounted `models/` folder is read through Docker Desktop's file sharing, which is slow until the files are cached.
+
+| Path | Batch | p50 per request | p95 per request | p50 per sentence |
+|---|---|---|---|---|
+| HTTP to the Docker container (client side) | 1 | 43.4 ms | 71.4 ms | 43.4 ms |
+| HTTP to the Docker container | 16 | 328.6 ms | 630.4 ms | 20.5 ms |
+
+The Docker run was measured later than the table above, so the two sets are not strictly comparable. An in-process run right after the Docker run (not saved) gave batch-1 p50 33.2 ms and batch-16 p50 334.9 ms. Against that run, Docker plus HTTP adds about 10 ms per request at batch 1 (port forwarding from Windows into the Docker VM and the HTTP round trip) and nothing measurable at batch 16. A first Docker run while other programs kept about 7 CPU cores busy gave batch-1 p50 64 ms and p95 145 ms; it was discarded and re-measured once the machine was quiet.
 
 ## int8 dynamic quantization: a measured negative result
 
@@ -308,7 +318,7 @@ Not committed: `data/`, `models/`, `results/errors_*.csv`, `results/error_catego
 - **Small neutral set.** 73 neutral sentences in validation and 167 in test. Neutral F1 and the validation-based choices built on it are noisy.
 - **Near-duplicates.** 46 test sentences (1.45%) match a train sentence after removing punctuation; the test score is slightly optimistic.
 - **Manual error categories** come from a single annotator with AI assistance and have not been spot-checked; their counts are not reported.
-- **Latency** comes from one Windows laptop in the "Silent" power plan, with sequential requests only; there is no concurrency or load test, and numbers vary between runs. Docker numbers are still missing.
+- **Latency** comes from one Windows laptop in the "Silent" power plan, with sequential requests only; there is no concurrency or load test, and numbers vary between runs. Docker was measured only through Docker Desktop on Windows, which adds file sharing for the model mount and port forwarding that a Linux host would not have; it was not measured on Linux.
 - **Segmenter mismatch.** underthesea is used instead of the VnCoreNLP segmenter used to pretrain PhoBERT; the effect was not measured.
 - **No XLM-R comparison yet**, and the published numbers are not directly comparable (F1 type unknown, different setup).
 - **Input format.** The model was trained on lowercased text with punctuation separated by spaces. The API deliberately applies only the training preprocessing, so input with capital letters or attached punctuation is out of distribution; its effect was not measured.
@@ -325,7 +335,7 @@ Not committed: `data/`, `models/`, `results/errors_*.csv`, `results/error_catego
 - Report test scores with and without the 46 near-duplicates.
 - Lowercasing and punctuation spacing in the API, checked with a consistency test.
 - Static quantization with calibration data, or ONNX Runtime, instead of dynamic int8.
-- Fill in the Docker measurements and add a concurrent load test.
+- Add a concurrent load test against the Docker container.
 
 ## Citations and licenses
 
